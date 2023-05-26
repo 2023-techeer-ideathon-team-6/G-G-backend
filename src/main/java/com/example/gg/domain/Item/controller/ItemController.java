@@ -2,11 +2,14 @@ package com.example.gg.domain.Item.controller;
 
 import com.example.gg.domain.Item.dto.request.ItemCreateRequest;
 import com.example.gg.domain.Item.dto.request.ItemUpdateRequest;
+import com.example.gg.domain.Item.dto.response.ItemListGetResponse;
 import com.example.gg.domain.Item.service.ItemService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Tag(name = "ItemController", description = "상품 관련 API")
 @RestController
@@ -32,5 +35,11 @@ public class ItemController {
     public void updateItem(@PathVariable Long id,
                            @RequestBody ItemUpdateRequest dto) {
         itemService.updateItem(id, dto);
+    }
+
+    @Operation(summary = "getItem", description = "상품 조회")
+    @GetMapping
+    public List<ItemListGetResponse> getItems(@RequestParam String title) {
+        return itemService.getItems(title);
     }
 }
