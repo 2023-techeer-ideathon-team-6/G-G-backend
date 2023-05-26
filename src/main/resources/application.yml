@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  profiles:
+    active: local
+
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    generate-ddl: false
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+
+
+# swaggerDOC
+springdoc:
+  swagger-ui:
+    version: v1.0
+  packages-to-scan: com.example.gg
