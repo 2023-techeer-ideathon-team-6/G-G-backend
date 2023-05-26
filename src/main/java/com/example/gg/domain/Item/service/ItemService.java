@@ -15,4 +15,8 @@ public class ItemService {
     public void createItem(ItemCreateRequest dto) {
         itemRepository.save(dto.toDto(dto));
     }
+
+    public void deleteItem(Long id) {
+        itemRepository.delete(itemRepository.findById(id).get());
+    }
 }

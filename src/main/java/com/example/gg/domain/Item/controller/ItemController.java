@@ -14,9 +14,15 @@ import org.springframework.web.bind.annotation.*;
 public class ItemController {
     private final ItemService itemService;
 
-    @Operation(summary = "getReComment", description = "답글 조회")
+    @Operation(summary = "createItem", description = "상품 등록")
     @PostMapping
     public void createItem(@RequestBody ItemCreateRequest dto) {
         itemService.createItem(dto);
+    }
+
+    @Operation(summary = "deleteItem", description = "상품 삭제")
+    @DeleteMapping("/{id}")
+    public void deleteItem(@PathVariable Long id) {
+        itemService.deleteItem(id);
     }
 }
