@@ -1,5 +1,6 @@
 package com.example.gg.domain.Item.entity;
 
+import com.example.gg.domain.member.entity.Member;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,6 +28,10 @@ public class Item {
 
     @Column(nullable = false) // 최고 입찰 금액
     private int maxHeart;
+
+//    @ManyToOne
+//    @JoinColumn(name = "member_id")
+//    private Member member;
 
     public Item(Long id,
                 String title,
