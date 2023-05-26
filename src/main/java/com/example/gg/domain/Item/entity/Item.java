@@ -1,6 +1,7 @@
 package com.example.gg.domain.Item.entity;
 
 import com.example.gg.domain.member.entity.Member;
+import com.example.gg.global.common.BaseEntity;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Item {
+public class Item extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_id")
@@ -29,9 +30,9 @@ public class Item {
     @Column(nullable = false) // 최고 입찰 금액
     private int maxHeart;
 
-//    @ManyToOne
-//    @JoinColumn(name = "member_id")
-//    private Member member;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     public Item(Long id,
                 String title,
