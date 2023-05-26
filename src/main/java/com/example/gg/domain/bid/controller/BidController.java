@@ -30,8 +30,8 @@ public class BidController {
     }
 
     @Operation(summary = "updateBid", description = "입찰금 증액")
-    @PutMapping("/success")
-    public void updateBid() {
-//        bidService.successBid();
+    @PutMapping("/success/{id}")
+    public void updateBid(Long itemId) {
+        bidService.successBid(itemId);
     }
 }

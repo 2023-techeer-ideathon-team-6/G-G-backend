@@ -46,7 +46,15 @@ public class BidService {
         }
     }
 
-//    public void successBid() {
-//        itemRepository.findByMaxHeart()
-//    }
+    public void successBid(Long itemId) {
+        Item item = itemRepository.findById(itemId).get();
+        Member itemMember = item.getMember(); // 주인
+        int maxHeart = item.getMaxHeart();
+        itemMember.plusHeart(maxHeart);
+
+        Bid bid = bidRepository.findByHeartCount(maxHeart);
+
+        Member member = bid.getMember(); // 입찰자
+        member.payToken(maxHeart);
+    }
 }

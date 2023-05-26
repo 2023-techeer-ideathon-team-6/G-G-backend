@@ -46,4 +46,12 @@ public class Member extends BaseEntity {
         this.heart = heart;
         this.token = token;
     }
+
+    public void plusHeart(int count) {
+        this.heart += count;
+    }
+
+    public void payToken(int count) {
+        this.heart -= count;
+    }
 }
