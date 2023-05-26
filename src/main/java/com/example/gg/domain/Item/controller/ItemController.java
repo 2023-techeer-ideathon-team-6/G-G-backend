@@ -1,21 +1,45 @@
 package com.example.gg.domain.Item.controller;
 
+import com.example.gg.domain.Item.dto.request.ItemCreateRequest;
+import com.example.gg.domain.Item.dto.request.ItemUpdateRequest;
+import com.example.gg.domain.Item.dto.response.ItemListGetResponse;
+import com.example.gg.domain.Item.service.ItemService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Tag(name = "ItemController", description = "상품 관련 API")
 @RestController
 @RequestMapping("api/v1/items")
 @RequiredArgsConstructor
 public class ItemController {
+    private final ItemService itemService;
 
-    @Operation(summary = "getReComment", description = "답글 조회")
+    @Operation(summary = "createItem", description = "상품 등록")
+    @PostMapping
+    public void createItem(@RequestBody ItemCreateRequest dto) {
+        itemService.createItem(dto);
+    }
+
+    @Operation(summary = "deleteItem", description = "상품 삭제")
+    @DeleteMapping("/{id}")
+    public void deleteItem(@PathVariable Long id) {
+        itemService.deleteItem(id);
+    }
+
+    @Operation(summary = "updateItem", description = "상품 수정")
+    @PutMapping("/{id}")
+    public void updateItem(@PathVariable Long id,
+                           @RequestBody ItemUpdateRequest dto) {
+        itemService.updateItem(id, dto);
+    }
+
+    @Operation(summary = "getItem", description = "상품 조회")
     @GetMapping
-    public String get() {
-        return "Hello world!";
+    public List<ItemListGetResponse> getItems(@RequestParam String title) {
+        return itemService.getItems(title);
     }
 }
