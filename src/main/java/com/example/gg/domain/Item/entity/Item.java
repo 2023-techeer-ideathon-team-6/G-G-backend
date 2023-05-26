@@ -37,4 +37,12 @@ public class Item {
         this.url = url;
         this.starCount = starCount;
     }
+
+    public void update(String title,
+                       String url,
+                       int starCount) {
+        this.title = title;
+        this.url = url;
+        this.starCount = starCount;
+    }
 }

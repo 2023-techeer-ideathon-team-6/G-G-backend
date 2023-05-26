@@ -1,6 +1,7 @@
 package com.example.gg.domain.Item.controller;
 
 import com.example.gg.domain.Item.dto.request.ItemCreateRequest;
+import com.example.gg.domain.Item.dto.request.ItemUpdateRequest;
 import com.example.gg.domain.Item.service.ItemService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,5 +25,12 @@ public class ItemController {
     @DeleteMapping("/{id}")
     public void deleteItem(@PathVariable Long id) {
         itemService.deleteItem(id);
+    }
+
+    @Operation(summary = "updateItem", description = "상품 수정")
+    @PutMapping("/{id}")
+    public void updateItem(@PathVariable Long id,
+                           @RequestBody ItemUpdateRequest dto) {
+        itemService.updateItem(id, dto);
     }
 }
