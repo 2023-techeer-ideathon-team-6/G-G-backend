@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Item extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comment_id")
+    @Column(name = "item_id")
     private Long id;
 
     @Column(nullable = false)
@@ -50,5 +50,9 @@ public class Item extends BaseEntity {
         this.title = title;
         this.url = url;
         this.starCount = starCount;
+    }
+
+    public void changeMaxHeartCount(int heartCount) {
+        this.maxHeart = heartCount;
     }
 }
