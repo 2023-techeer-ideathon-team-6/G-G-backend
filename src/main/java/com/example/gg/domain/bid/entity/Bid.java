@@ -35,4 +35,8 @@ public class Bid extends BaseEntity {
         this.item = item;
         this.heartCount = heartCount;
     }
+
+    public void update(int heartCount) {
+        this.heartCount = heartCount;
+    }
 }

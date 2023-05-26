@@ -1,17 +1,15 @@
 package com.example.gg.domain.bid.controller;
 
 import com.example.gg.domain.Item.dto.request.ItemCreateRequest;
+import com.example.gg.domain.bid.dto.request.BidCUpdateRequest;
 import com.example.gg.domain.bid.dto.request.BidCreateRequest;
 import com.example.gg.domain.bid.service.BidService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@Tag(name = "ItemController", description = "상품 관련 API")
+@Tag(name = "BidController", description = "경매 관련 API")
 @RestController
 @RequestMapping("api/v1/bids")
 @RequiredArgsConstructor
@@ -22,5 +20,12 @@ public class BidController {
     @PostMapping
     public void createBid(@RequestBody BidCreateRequest dto) {
         bidService.createBid(dto);
+    }
+
+    @Operation(summary = "updateBid", description = "입찰금 증액")
+    @PutMapping("/{id}")
+    public void updateBid(@PathVariable Long id,
+                          @RequestBody BidCUpdateRequest dto) {
+        bidService.updateBid(id, dto);
     }
 }
