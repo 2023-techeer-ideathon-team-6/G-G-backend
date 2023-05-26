@@ -45,4 +45,8 @@ public class BidService {
             item.changeMaxHeartCount(dto.getHeartCount());
         }
     }
+
+//    public void successBid() {
+//        itemRepository.findByMaxHeart()
+//    }
 }
